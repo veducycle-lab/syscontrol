@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, QMessageBox
 from f_mainwin import MainWindow
+from PyQt5.QtGui import QIcon
 
 class LoginWindow(QWidget):
     def __init__(self):
@@ -10,9 +11,11 @@ class LoginWindow(QWidget):
         self.username_input.editingFinished.connect(self.checkUsername)
 
     def initUI(self):
-        self.setGeometry(300, 300, 300, 150)
-        self.setWindowTitle('Login')
-
+        self.setGeometry(450, 450, 600, 450)
+        self.setWindowTitle('SysControl')
+        self.setWindowIcon(QIcon(""))
+        
+        
         self.login_button = QPushButton('Войти', self)
         self.login_button.move(30, 90)
         self.login_button.clicked.connect(self.check_login)

@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QStackedWidget, QLabel, QVBoxLayout, QWidget, QApplication
-from PyQt5.QtGui import QPalette, QColor
+from PyQt5.QtGui import QPalette, QColor, QIcon
 from PyQt5.QtCore import Qt
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -7,7 +7,10 @@ class MainWindow(QMainWindow):
         
         # main window properties
         self.setGeometry(500, 500, 900, 150)
-        self.setWindowTitle('Main')
+        self.setWindowTitle('SysControl')
+        self.setWindowIcon(QIcon(""))
+
+
         self.setStyleSheet("""
             QPushButton {
                 background-color: transparent;
