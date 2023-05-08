@@ -1,52 +1,53 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QFrame, QVBoxLayout, QHBoxLayout
 
-
-class MyWindow(QWidget):
-    def __init__(self):
+class MyWindow(QWidget): 
+    def __init__(self): 
         super().__init__()
+        # Создаем фреймы
+        self.frame1 = QFrame()
+        self.frame2 = QFrame()
 
-        # Создаем кнопку
-        self.btn = QPushButton("Кнопка")
+        # Задаем цвета фреймов
+        self.frame1.setStyleSheet("background-color: red")
+        self.frame2.setStyleSheet("background-color: white")
 
-        # Создаем виджеты
-        self.widget1 = QWidget()
-        self.widget2 = QWidget()
+        # Создаем кнопки
+        self.button1 = QPushButton("Фрейм 1")
+        self.button2 = QPushButton("Фрейм 2")
 
-        # Задаем текст виджетов
-        self.widget1_text = "Это виджет 1"
-        self.widget2_text = "Это виджет 2"
+        # При нажатии на кнопки меняем текущий виджет на соответствующий фрейм
+        self.button1.clicked.connect(lambda:self.set_current_frame(1))
+        self.button2.clicked.connect(lambda:self.set_current_frame(2))
 
-        # Создаем метки для виджетов и задаем им начальное значение
-        self.widget1_lbl = QLabel(self.widget1_text)
-        self.widget2_lbl = QLabel(self.widget2_text)
+        # Создаем вертикальный компоновщик для кнопок
+        self.button_layout = QVBoxLayout()
+        self.button_layout.addWidget(self.button1)
+        self.button_layout.addWidget(self.button2)
 
-        # Создаем вертикальный компоновщик
-        self.layout = QVBoxLayout()
+        # Создаем горизонтальный компоновщик для фреймов и кнопок
+        self.main_layout = QHBoxLayout()
+        self.main_layout.addWidget(self.frame1)
+        self.main_layout.addWidget(self.frame2)
+        self.main_layout.addLayout(self.button_layout)
 
-        # Добавляем метки в виджеты
-        self.widget1.setLayout(self.layout.addWidget(self.widget1_lbl))
-        self.widget2.setLayout(self.layout.addWidget(self.widget2_lbl))
-
-        # Устанавливаем начальное значение виджетов
-        self.widget1_lbl.setText(self.widget1_text)
-        self.widget2_lbl.setText(self.widget2_text)
-
-        # При наведении курсора на кнопку меняем текст второго виджета
-        self.btn.clicked.connect(self.on_btn_click)
-
-        # Добавляем кнопку и виджеты в компоновщик
-        self.layout.addWidget(self.btn)
-        self.layout.addWidget(self.widget1)
-        self.layout.addWidget(self.widget2)
+        # Устанавливаем начальный видимый фрейм
+        self.current_frame = self.frame1
 
         # Устанавливаем компоновщик на окно
-        self.setLayout(self.layout)
+        self.setLayout(self.main_layout)
 
-    def on_btn_click(self):
-        self.widget2_lbl.setText("Новый текст второго виджета")
+    def set_current_frame(self, frame_num):
+        if frame_num == 1:
+            self.current_frame = self.frame1
+        elif frame_num == 2:
+            self.current_frame = self.frame2
+        self.current_frame.show()
+        for frame in [self.frame1, self.frame2]:
+            if frame != self.current_frame:
+                frame.hide()
 
-if __name__ == "__main__":
-    app = QApplication([])
-    window = MyWindow()
-    window.show()
-    app.exec_()
+if __name__ == "__main__": 
+    app = QApplication([]) 
+    window = MyWindow() 
+    window.show() 
+    app.exec_()                

@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QStackedWidget, QLabel, QVBoxLayout, QWidget, QApplication
+from PyQt5.QtWidgets import QMainWindow, QFrame, QPushButton, QStackedWidget, QLabel, QVBoxLayout, QWidget, QApplication
 from PyQt5.QtGui import QPalette, QColor, QIcon
 from PyQt5.QtCore import Qt
 class MainWindow(QMainWindow):
@@ -21,20 +21,9 @@ class MainWindow(QMainWindow):
                 background-color: #fff;
                 color: #3498db;
             }
-            QPushButton:hover + #label1 {
-            display: none;
-            }
-
-            QPushButton:hover + #label2 {
-            display: block;
-            }
-
-            #label1 {
-            display: block;
-            }
-
-            #label2 {
-            display: none;
+                QPushButton:hover {
+                background-color: #fff;
+                color: #3498db;
             }
         """)
         # self.showFullScreen()
@@ -67,6 +56,9 @@ class MainWindow(QMainWindow):
 
         # Устанавливаем виджет в качестве центрального виджета главного окна
         self.setCentralWidget(widget)
+
+
+        
 
 if __name__ == '__main__':
     app = QApplication([])
