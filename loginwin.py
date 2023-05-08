@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, QMessageBox
-from somebody2 import MainWindow
+from f_mainwin import MainWindow
 
 class LoginWindow(QWidget):
     def __init__(self):
