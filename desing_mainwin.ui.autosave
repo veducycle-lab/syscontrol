@@ -326,6 +326,9 @@
        <height>551</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border: 4px solid black; border-color: rgb(0, 0, 0);</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
