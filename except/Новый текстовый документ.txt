@@ -1,0 +1,37 @@
+print('\n'.join(sorted([input() for _ in range(3)], reverse=True)))
+print(f'Наименьшее число = {min((s:=[int(input()) for _ in range(5)]))}\nНаибольшее число = {max(s)}')
+
+
+lst = map(float, [input() for _ in range(5)])
+print(sum(map(abs, lst)))
+
+
+a,b,c=input(),input(),input()
+print(min(a, b, c, key=len),max(a, b, c, key=len), sep='\n')
+
+[print('Python awesome!') for _ in range(10)]
+
+print(*['AAA' for _ in range(6)], *['BBBB' for _ in range(5)], 'E', *['TTTTT' for _ in range(9)], 'G', sep='\n')
+
+
+[[print(i, n) for i in range(10)] for n in [input()]]
+(lambda s: [print(i, s) for i in range(10)])(input())
+
+[print('Квадрат числа', i, 'равен', i ** 2) for i in range(int(input()) + 1)]
+[print(f'Квадрат числа {i} равен {i**2}') for i in range(int(input())+1)]
+print(*[f'Квадрат числа {i} равен {i**2}' for i in range(int(input())+1)], sep='\n')
+
+
+[print('*' * i) for i in range(int(input()) + 1)[::-1]]
+[print('*' * i) for i in range(int(input()), 0, -1)]
+print(*['*'*i for i in range(int(input()), 0, -1)], sep='\n')
+
+
+
+m, p, n = float(input()), float(input()), int(input())
+[print(i + 1, m * (1 + p / 100) ** (i)) for i in range(n)]
+(lambda m, n, p: [print(i + 1, m * (1 + n / 100) ** i) for i in range(p)])(*(int(input()) for _ in "___"))
+
+
+m, n = int(input()), int(input())
+print(*[range(m, n - 1, -1), range(m, n + 1)][m < n], sep='\n')
